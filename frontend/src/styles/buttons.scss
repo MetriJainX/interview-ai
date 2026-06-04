@@ -1,0 +1,16 @@
+.buttons{
+border:none;
+outline:none;   
+padding: inline 1.5em;
+padding-block:0.75em;
+border-radius:1rem;
+cursor:pointer;
+
+&.primary{
+    background-color: #f87171;
+    color:#fff;
+}
+&:active{
+    transform:scale(0.9);
+}
+}

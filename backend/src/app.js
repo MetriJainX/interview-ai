@@ -9,7 +9,8 @@ app.use(cookieParser())
 app.use(cors({
     origin:["http://localhost:5173",
          "http://localhost:5174",
-        "https://interview-ai-0s8p.onrender.com"],
+        "https://interview-ai-frontend-8inm.onrender.com"
+    ],
     credentials:true,
 })); 
 

@@ -34,8 +34,8 @@ async function registerUserController(req,res){
 // token created above with the help of id and username is set here
        res.cookie("token", token, {
     httpOnly: true,
-    secure: false,      // localhost ke liye
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000
 });
 
@@ -79,8 +79,8 @@ async function loginUserController(req,res){
 // cookie me set krke response me deatils bheji
         res.cookie("token", token, {
     httpOnly: true,
-    secure: false,      // localhost ke liye
-    sameSite: "lax",
+    secure: true,
+    sameSite: "none",
     maxAge: 24 * 60 * 60 * 1000
 });
         res.status(200).json({

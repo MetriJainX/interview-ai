@@ -18,17 +18,20 @@ const {user,setUser,loading,setLoading}=context
     // login ke time pr email,password dalne ke time api call hoti h or uska response ane tk user ko loading 
     // shor krna pdta thus we used handleLogin
 
-    const handleLogin = async ({email, password}) => {
-        setLoading(true);
-        try {
-            const data = await login({email, password});
-            setUser(data);
-        } catch (error) {
-            console.error('Login failed:', error);
-        } finally {
-            setLoading(false);
-        }}
+   const handleLogin = async ({ email, password }) => {
+  setLoading(true);
 
+  try {
+    const data = await login({ email, password });
+    setUser(data.user);
+    return true;
+  } catch (error) {
+    console.error("LOGIN FAILED", error);
+    return false;
+  } finally {
+    setLoading(false);
+  }
+};
 
     const handleRegister = async ({username,email,password}) => {
             setLoading(true);
@@ -59,8 +62,12 @@ useEffect(()=>{
     const getAndSetUser = async () => {
         try {
             const data = await getMe();
-            setUser(data.user);
-        } catch (error) {
+           if (data?.user) {
+        setUser(data.user);
+      } else {
+        setUser(null);
+      }
+        } catch (error) {setUser(null);
             console.error("Error fetching user data:", error);
         } finally {
             setLoading(false);
